@@ -20,14 +20,14 @@ class AdditionController extends Controller
 
         $page = new PageContent();
 
-        $page->setPageName('Six');
-        $page->setTitle('Six page');
+        $page->setPageName('Seven');
+        $page->setTitle('Seven page');
         $page->setAboutContent('Each time you make a change to your schema, 
         run these two commands to generate the migration and then execute it. 
         Be sure to commit the migration files and execute them when you deploy.');
         $page->setAdditionalInfo('tel:044-330-12-15; email:example@gmail.com');
         $page->setShowAdditionalInfo(false);
-        $page->setUpdatedAt(DateTime::createFromFormat('Y-m-d H:i:s','2017-12-12 17:30:30'));
+        $page->setUpdatedAt(\date_create());
 
         $entityManager->persist($page);
         $entityManager->flush();

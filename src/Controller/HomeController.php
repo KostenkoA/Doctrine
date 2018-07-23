@@ -11,24 +11,23 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 class HomeController extends Controller
 {
     /**
-     * @Route("/home", name="home")
+     * @Route("/home/{id}", name="home")
+     * @param $id
+     * @return Response
      */
-    public function index()
+    public function index($id)
     {
         $entityManager = $this->getDoctrine()->getManager();
 
-       // $page = new PageContent();
         /**
          * @var PageContentRepository $repository
          */
         $repository = $entityManager->getRepository(PageContent::class);
-        $page = $repository->findPageById(1);
+        $page = $repository->find($id);
 
-        //var_dump($page);
-        //die;
-
-        return new Response(var_dump($page));
-
+        return $this->render('/page.html.twig', [
+            'page' => $page
+        ]);
 
     }
 }
