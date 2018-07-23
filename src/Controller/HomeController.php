@@ -12,7 +12,7 @@ class HomeController extends Controller
 {
     /**
      * @Route("/home/{id}", name="home")
-     * @param $id
+     * @param $pageName
      * @return Response
      */
     public function index($id)
