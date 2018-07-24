@@ -11,11 +11,11 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 class HomeController extends Controller
 {
     /**
-     * @Route("/home/{id}", name="home")
-     * @param $pageName
+     * @Route("/{name}", name="home")
+     * @param $name
      * @return Response
      */
-    public function index($id)
+    public function index($name)
     {
         $entityManager = $this->getDoctrine()->getManager();
 
@@ -23,10 +23,15 @@ class HomeController extends Controller
          * @var PageContentRepository $repository
          */
         $repository = $entityManager->getRepository(PageContent::class);
-        $page = $repository->find($id);
-
+        $page = $repository->findPageByName($name);
+/*
+        echo '<pre>';
+        var_dump($page);
+        echo '</pre>';
+        die;
+*/
         return $this->render('/page.html.twig', [
-            'page' => $page
+            'page' => $page[0]
         ]);
 
     }

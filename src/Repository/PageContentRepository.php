@@ -19,13 +19,13 @@ class PageContentRepository extends ServiceEntityRepository
         parent::__construct($registry, PageContent::class);
     }
 
-    public function findPageById($id)
+    public function findPageByName($name)
     {
         return $this->createQueryBuilder('p')
             ->select('p')
-            ->where('p.id= '.$id)
+            ->where("p.pageName = '$name'")
             ->getQuery()
-            ->getArrayResult()
+            ->getResult()
         ;
     }
     /*
