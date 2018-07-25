@@ -25,7 +25,7 @@ class PageContentRepository extends ServiceEntityRepository
             ->select('p')
             ->where("p.pageName = '$name'")
             ->getQuery()
-            ->getResult()
+            ->getOneOrNullResult()
         ;
     }
     /*

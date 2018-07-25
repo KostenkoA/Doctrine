@@ -31,7 +31,7 @@ class HomeController extends Controller
         die;
 */
         return $this->render('/page.html.twig', [
-            'page' => $page[0]
+            'page' => $page
         ]);
 
     }
